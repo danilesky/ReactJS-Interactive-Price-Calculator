@@ -9,11 +9,17 @@ function App() {
   return (
     <div className="App">
       <Choice
-        options={["Liquid / Cream", "Other"]}
+        options={[
+          { placeholder: "Liquid / Cream", value: false },
+          { placeholder: "Other", value: false },
+        ]}
         title="What is the consistency of your products?"
       />
       <Choice
-        options={["Aluminum-based sachet", "Recyclable sachet"]}
+        options={[
+          { placeholder: "Aluminum-based sachet", value: false },
+          { placeholder: "Recyclable sachet", value: false },
+        ]}
         title="Sachet material"
       />
     </div>

@@ -59,17 +59,22 @@ const CheckboxInside = styled.div`
   display: flex;
   gap: 10px;
 `;
-const Checkbox = ({ checkFn, name }) => {
+const Checkbox = ({ checkFn, name, value, multiple }) => {
   const [checked, setChecked] = useState(false);
-  const [title, setTitle] = useState("");
   const checkHandler = () => {
-    setChecked(!checked);
-    checkFn && checkFn(!checked);
+    if (!multiple) {
+      checkFn && checkFn(!checked, name);
+      value && setChecked(!checked);
+    } else {
+      setChecked(!checked);
+    }
   };
 
-  useEffect(() => {
-    setTitle(name);
-  }, []);
+  !multiple &&
+    useEffect(() => {
+      setChecked(value);
+    }, [value]);
+
   return (
     <CheckboxWrap
       type="checkbox"
@@ -77,7 +82,7 @@ const Checkbox = ({ checkFn, name }) => {
       onClick={checkHandler}
       actived={checked}
     >
-      <CheckboxInside>{title}</CheckboxInside>
+      <CheckboxInside>{name}</CheckboxInside>
     </CheckboxWrap>
   );
 };

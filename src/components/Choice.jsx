@@ -27,6 +27,20 @@ const Choice = ({ options, title }) => {
   const [choices, setChoices] = useState([]);
   const [name, setName] = useState("");
 
+  const choicesHandler = (value, title) => {
+    setChoices((prev) =>
+      prev.map((choice) => {
+        let newChoice = {};
+        if (choice.placeholder === title) {
+          newChoice = { ...choice, value: value };
+        } else {
+          newChoice = { ...choice, value: !value };
+        }
+        return newChoice;
+      })
+    );
+  };
+  console.log(choices);
   useEffect(() => {
     options && setChoices(options);
     title && setName(title);
@@ -35,7 +49,16 @@ const Choice = ({ options, title }) => {
     <ChoiceWrapper>
       <Title>{name}</Title>
       <Checks>
-        {choices && choices.map((choice) => <Checkbox name={choice} />)}
+        {choices &&
+          choices.map((choice) => (
+            <Checkbox
+              key={choice.placeholder}
+              name={choice.placeholder}
+              value={choice.value}
+              checkFn={choicesHandler}
+              //multiple -> allows choose more options
+            />
+          ))}
       </Checks>
     </ChoiceWrapper>
   );
