@@ -22,6 +22,7 @@ const Title = styled.span`
 const Checks = styled.div`
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 `;
 const Choice = ({ options, title }) => {
   const [choices, setChoices] = useState([]);
@@ -34,7 +35,7 @@ const Choice = ({ options, title }) => {
         if (choice.placeholder === title) {
           newChoice = { ...choice, value: value };
         } else {
-          newChoice = { ...choice, value: !value };
+          newChoice = { ...choice, value: false };
         }
         return newChoice;
       })
