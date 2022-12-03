@@ -21,6 +21,7 @@ function App() {
         title="Sachet material"
       />
       <Choice
+        disabled
         options={[
           { placeholder: "Gloss", value: false },
           { placeholder: "Matte", value: false },
@@ -28,6 +29,7 @@ function App() {
         title="Sachet surface"
       />
       <Choice
+        disabled
         options={[
           { placeholder: "Full color CMYK", value: false },
           { placeholder: "Black and whitet", value: false },
@@ -35,6 +37,7 @@ function App() {
         title="Sachet print"
       />
       <Choice
+        disabled
         options={[
           { placeholder: "1 – 2 ml", value: false },
           { placeholder: "3 ml", value: false },
@@ -44,6 +47,7 @@ function App() {
         title="Filling volume / sachet"
       />
       <Choice
+        disabled
         options={[
           { placeholder: "50 x 70 mm", value: false },
           { placeholder: "70 x 70 mm", value: false },

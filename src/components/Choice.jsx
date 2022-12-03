@@ -9,6 +9,14 @@ const ChoiceWrapper = styled.div`
   flex-direction: column;
   font-family: "Red Hat Display";
   margin-bottom: 30px;
+  ${(props) => {
+    if (props.disabled) {
+      return `
+      pointer-events:none;
+      opacity : 0.2;
+      `;
+    }
+  }}
 `;
 
 const Title = styled.span`
@@ -24,7 +32,7 @@ const Checks = styled.div`
   gap: 10px;
   flex-wrap: wrap;
 `;
-const Choice = ({ options, title }) => {
+const Choice = ({ options, title, disabled }) => {
   const [choices, setChoices] = useState([]);
   const [name, setName] = useState("");
 
@@ -47,7 +55,7 @@ const Choice = ({ options, title }) => {
     title && setName(title);
   }, []);
   return (
-    <ChoiceWrapper>
+    <ChoiceWrapper disabled={disabled}>
       <Title>{name}</Title>
       <Checks>
         {choices &&
@@ -57,7 +65,7 @@ const Choice = ({ options, title }) => {
               name={choice.placeholder}
               value={choice.value}
               checkFn={choicesHandler}
-              //multiple -> allows choose more options
+              //multiple --> this props allow to choose more then once //default is unique
             />
           ))}
       </Checks>
