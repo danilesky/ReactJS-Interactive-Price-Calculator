@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import Checkbox from "./Checkbox";
+import Title from "./interface/Title";
 
 const ChoiceWrapper = styled.div`
   display: flex;
@@ -19,19 +20,12 @@ const ChoiceWrapper = styled.div`
   }}
 `;
 
-const Title = styled.span`
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 21px;
-  color: #151617;
-  margin-bottom: 7px;
-`;
-
 const Checks = styled.div`
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 `;
+
 const Choice = ({ options, title, disabled, chosenFn }) => {
   const [choices, setChoices] = useState([]);
   const [name, setName] = useState("");
