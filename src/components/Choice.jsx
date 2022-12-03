@@ -32,13 +32,13 @@ const Checks = styled.div`
   gap: 10px;
   flex-wrap: wrap;
 `;
-const Choice = ({ options, title, disabled }) => {
+const Choice = ({ options, title, disabled, chosenFn }) => {
   const [choices, setChoices] = useState([]);
   const [name, setName] = useState("");
 
   const choicesHandler = (value, title) => {
-    setChoices((prev) =>
-      prev.map((choice) => {
+    setChoices((prev) => {
+      let newChoices = prev.map((choice) => {
         let newChoice = {};
         if (choice.placeholder === title) {
           newChoice = { ...choice, value: value };
@@ -46,10 +46,22 @@ const Choice = ({ options, title, disabled }) => {
           newChoice = { ...choice, value: false };
         }
         return newChoice;
-      })
-    );
+      });
+      //This return in props to othe compoenent if some option in this was marked
+      chosenFn &&
+        chosenFn(() => {
+          let isChosen = false;
+          newChoices.map((choice) => {
+            if (choice.value === true) {
+              isChosen = true;
+            }
+          });
+          return isChosen;
+        });
+      return newChoices;
+    });
   };
-  console.log(choices);
+
   useEffect(() => {
     options && setChoices(options);
     title && setName(title);

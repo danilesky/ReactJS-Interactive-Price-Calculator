@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import Checkbox from "./components/Checkbox";
 import Choice from "./components/Choice";
 
 function App() {
+  const [material, setMaterial] = useState(false);
+  console.log(material);
   return (
     <div className="App">
       <Choice
@@ -19,9 +20,10 @@ function App() {
           { placeholder: "Recyclable sachet", value: false },
         ]}
         title="Sachet material"
+        chosenFn={(e) => setMaterial(e)}
       />
       <Choice
-        disabled
+        disabled={!material}
         options={[
           { placeholder: "Gloss", value: false },
           { placeholder: "Matte", value: false },
