@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import checkmark from "../assets/check.svg";
@@ -58,21 +59,25 @@ const CheckboxInside = styled.div`
   display: flex;
   gap: 10px;
 `;
-const Checkbox = ({ checkFn }) => {
+const Checkbox = ({ checkFn, name }) => {
   const [checked, setChecked] = useState(false);
+  const [title, setTitle] = useState("");
   const checkHandler = () => {
     setChecked(!checked);
     checkFn && checkFn(!checked);
   };
+
+  useEffect(() => {
+    setTitle(name);
+  }, []);
   return (
     <CheckboxWrap
       type="checkbox"
-      name=""
-      id=""
+      id={name}
       onClick={checkHandler}
       actived={checked}
     >
-      <CheckboxInside>Hello world</CheckboxInside>
+      <CheckboxInside>{title}</CheckboxInside>
     </CheckboxWrap>
   );
 };
