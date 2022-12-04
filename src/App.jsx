@@ -5,6 +5,7 @@ import Choice from "./components/Choice";
 import { Form, FormOverlay } from "./components/interface/Form";
 import sachetImage from "./assets/sachet.png";
 import Image from "./components/interface/Image";
+import Box from "./components/interface/Box";
 
 const AppBody = styled.div`
   display: flex;
@@ -17,6 +18,12 @@ const AppBody = styled.div`
   }
 `;
 
+const BoxWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 function App() {
   const [material, setMaterial] = useState(false);
   const [surface, setSurface] = useState(false);
@@ -26,7 +33,15 @@ function App() {
   console.log(material);
   return (
     <AppBody>
-      <Image src={sachetImage} height={465} width={396} alt="Minipak sachet" />
+      <BoxWrapper>
+        <Image
+          src={sachetImage}
+          height={465}
+          width={396}
+          alt="Minipak sachet"
+        />
+        <Box width={324}>Hello</Box>
+      </BoxWrapper>
       <FormOverlay>
         <Form scrollable={filling}>
           <Choice
