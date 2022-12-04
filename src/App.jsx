@@ -3,9 +3,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import Choice from "./components/Choice";
 import { Form, FormOverlay } from "./components/interface/Form";
+import sachetImage from "./assets/sachet.png";
+import Image from "./components/interface/Image";
 
 const AppBody = styled.div`
   display: flex;
+  gap: 136px;
   background: #f0ece8;
   min-height: 100vh;
   width: 100%;
@@ -23,6 +26,7 @@ function App() {
   console.log(material);
   return (
     <AppBody>
+      <Image src={sachetImage} height={465} width={396} alt="Minipak sachet" />
       <FormOverlay>
         <Form>
           <Choice
