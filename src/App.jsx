@@ -7,7 +7,7 @@ import sachetImage from "./assets/sachet.png";
 import Image from "./components/interface/Image";
 import Box from "./components/interface/Box";
 import Title from "./components/interface/Title";
-import calcPrice from "./components/functions/calcPrice";
+import calcPrice from "./functions/calcPrice";
 
 const AppBody = styled.div`
   display: flex;
