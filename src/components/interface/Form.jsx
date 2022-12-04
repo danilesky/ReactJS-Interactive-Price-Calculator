@@ -5,7 +5,12 @@ export const Form = styled.div`
   padding: 32px;
   border-radius: 29px;
   height: 652px;
-  overflow: auto;
+  overflow: ${(props) => {
+    if (props.scrollable) {
+      return "scroll";
+    }
+    return "hidden";
+  }};
   background: white;
   max-width: 502px;
 `;

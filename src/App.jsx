@@ -28,7 +28,7 @@ function App() {
     <AppBody>
       <Image src={sachetImage} height={465} width={396} alt="Minipak sachet" />
       <FormOverlay>
-        <Form>
+        <Form scrollable={filling}>
           <Choice
             options={[
               { placeholder: "Liquid / Cream", value: false },
