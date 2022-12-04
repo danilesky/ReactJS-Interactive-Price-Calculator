@@ -6,6 +6,8 @@ import { Form, FormOverlay } from "./components/interface/Form";
 import sachetImage from "./assets/sachet.png";
 import Image from "./components/interface/Image";
 import Box from "./components/interface/Box";
+import Title from "./components/interface/Title";
+import calcPrice from "./components/functions/calcPrice";
 
 const AppBody = styled.div`
   display: flex;
@@ -30,7 +32,7 @@ function App() {
   const [print, setPrint] = useState(false);
   const [sachet, setSachet] = useState(false);
   const [filling, setFilling] = useState(false);
-  console.log(material);
+
   return (
     <AppBody>
       <BoxWrapper>
@@ -40,7 +42,19 @@ function App() {
           width={396}
           alt="Minipak sachet"
         />
-        <Box width={324}>Hello</Box>
+        <Box width={324}>
+          <Title size={22} align={"center"} justifyItem={"center"}>
+            {calcPrice({
+              startPrice: 0.22,
+              endPrice: 1.43,
+              conditions: [
+                { value: surface, start: 1.33, final: 2 },
+                { value: print, start: 1.33, final: 2 },
+                { value: filling, start: 1.33, final: 2 },
+              ],
+            })}
+          </Title>
+        </Box>
       </BoxWrapper>
       <FormOverlay>
         <Form scrollable={filling}>
